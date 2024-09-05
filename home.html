@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="img/png" href="images/wicon.png">
+    <style>
+        .carousel-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .carousel-container {
+            width: 80%;
+            max-width: 554px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide img {
+            width: 554px;
+            flex-shrink: 0;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+
+            <h1>Jonny's Portfolio</h1>
+
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="https://mail.google.com/mail/u/1/#inbox?compose=GTvVlcSDbFbLpcJHPgfQBkHWFspmbKpqnwHNFTHHDHbVQkmqhpVDSqTcsbFJDgKzJgpwzZXXxvjvZ"
+                            target="_blank">Contact</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="carousel-wrapper">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="images/carousel1.JPG"> <!-- Clone of the last image --> <img src="images/ProvoChipmunk.jpg">
+                <img src="images/duck3.jpg">
+                <img src="images/carousel1.JPG">
+                <img src="images/ProvoChipmunk.jpg"> <!-- Clone of the first image -->
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+    <script>
+        let slideIndex = 1; // Start at the first image (index 1)
+        const slides = document.querySelectorAll('.carousel-slide img');
+        const totalSlides = slides.length;
+        const carouselSlide = document.querySelector('.carousel-slide');
+
+        function showSlide(index) {
+            const slideWidth = slides[0].clientWidth;
+            carouselSlide.style.transition = 'transform 0.5s ease-in-out';
+            carouselSlide.style.transform = `translateX(${-index * slideWidth}px)`;
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlide(slideIndex);
+
+            if (slideIndex === totalSlides - 1) { // If it's the clone of the first image
+                setTimeout(() => {
+                    carouselSlide.style.transition = 'none';
+                    slideIndex = 1; // Jump to the actual first image
+                    showSlide(slideIndex);
+                }, 500); // Wait for the transition to finish
+            }
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlide(slideIndex);
+
+            if (slideIndex === 0) { // If it's the clone of the last image
+                setTimeout(() => {
+                    carouselSlide.style.transition = 'none';
+                    slideIndex = totalSlides - 2; // Jump to the actual last image
+                    showSlide(slideIndex);
+                }, 500); // Wait for the transition to finish
+            }
+        }
+
+        // Initialize the carousel
+        showSlide(slideIndex);
+
+        // Optional: Auto-play functionality
+        setInterval(nextSlide, 3000); // Change slide every 3 seconds
+    </script>
+    <div class="left-box">
+    </div>
+
+    <div class="grey-box-text-left">
+        <p>These are some photo's of mine, you can find more in the gallery.</p>
+
+    </div>
+
+    </div>
+    <div class="description">
+        <p> Jonny is a 14 year old photographer based in Utah, he photographs nature, wildlife, and cars. At the
+            young
+            age of 10, Jonny became obsessed with cars and began to photograph them with his phone at the age of 12.
+            He
+            loved doing photography and began to photograph more than just cars and started to drift away from his
+            love
+            for cars, but in the summer of 2022 he went to a car show and loved cars yet again, this soon changed as
+            he
+            began to go on hikes more often and started to photograph wildlife and nature. He still loves to
+            photograph
+            nature and wildlife.</p>
+
+
+    </div>
+
+</body>
+
+</html>
