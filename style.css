@@ -199,3 +199,12 @@ body {
   height: 25%;
 
 }
+
+
+
+
+.back img{
+position:fixed;
+  z-index: 1;
+  top:18px;
+}
