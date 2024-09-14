@@ -200,6 +200,15 @@ body {
 
 }
 
+.back img {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  width: 55px;
+  height: 52px;
+  z-index: 1000;
+}
+
 
 
 
